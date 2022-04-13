@@ -41,6 +41,7 @@
     text-align: justify;
     line-height: 1cm;
     text-indent: 1cm;
+    font-weight: 500;
 }
 
 .tentang-list{
@@ -55,6 +56,14 @@
     width: 80%;
     height: auto;
     
+}
+
+.harga{
+    color: #019267;
+}
+
+.detail-harga{
+    font-weight: 500;
 }
 /* CUSTOM RESETS
 ================================================== */
@@ -92,7 +101,7 @@ h2 {
 }
 
 h1,h2,h3,h4,h5 {
-    color: #26292c;
+    color: #000000;
 }
 
 p + p {
@@ -989,13 +998,11 @@ html, body {
 
 .service-title {
     margin: 35px 0 25px;
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: bold;
+    font-size: 20px;
 }
 
 .service-info {
-    font-size: 13px; 
+    font-size: 16px; 
 }
 
 /* Section: Map Feature */
