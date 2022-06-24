@@ -33,6 +33,8 @@
 		
 	<section class="bottom-slider site-section section-services gray-bg text-center">
 	<div class="container" style="margin-top:50px;margin-bottom:50px;">
+
+		
 	<h3 class="tittle">Keunggulan Desa kami</h3>
 		
 					<br><br>
@@ -78,7 +80,7 @@
 		<br>
 		<br>
 				<div>
-					<a href="VT_Salenrang/index.html">
+					<a href="Virtual_Tour_Salenrang/index.html">
 				<img src="images/360.png" alt="" style="width:350px;height:350px;"></a>
 				</div>
 		</div>
@@ -89,14 +91,22 @@
 	<section class="main-content-w3layouts-agileits">
 		<center>
 		<div class="container">
-		<h3 class="tittle">yang ada di desa kami</h3>
+		<h3 class="tittle">Wisata yang sedang populer</h3>
 		<br>
 		<br>
+		<form action="search.php" method="post" name="form" >
+						<div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="search" placeholder="Cari di sini..." required="yes" type="text" name="search[keyword]" style="background-color:#fff;" />
+                                <button class="btn btn-success" type="submit" name="submit">Search</button>
+                            </div>
+                        </div>
+					</form>
 				<div>
 					<!--grid blogs below-->
 					<div class="blog-girds-sec">
 						<div class="row">
-							<?php getblogridposts("blogs");?>
+						<?php geteditorschoice("editors_choice");?>
 							<!--bloggrids-->
 						</div>
 					</div>

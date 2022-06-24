@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Ayam Petok</title>
+		<!--projectdescription--><meta name="description" content="Baruuuuurururuurru"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+		
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.25em;
+				height: 0.25em;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #2c3643; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #0d9e59; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #00e075; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color; black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 3em;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+	    <div id="container" style="color: black;"></div>
+    	
+		
+		
+		<!--customhtml--><div class='customhotspot' id='pute'></div><div class='customhotspot' id='awal'><div onclick='chclickinfospotawal2();' id='infospotawal2' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/826968.png' style='width: 64px; height: 64px;'></div><div onclick='chclickinfospotawal3();' id='infospotawal3' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/235861.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='tengah'></div><div class='customhotspot' id='depan'><div onclick='chclickinfospotdepan1();' id='infospotdepan1' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/427491.png' style='width: 64px; height: 64px;'></div><div onclick='chclickinfospotdepan2();' id='infospotdepan2' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/826968.png' style='width: 64px; height: 64px;'></div><div onclick='chclickinfospotdepan3();' id='infospotdepan3' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/png-transparent-prehistory-paleolithic-game-ancient-history-others-miscellaneous-hand-video-game-thumbnail-removebg-preview.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='ammarung'></div><div class='customhotspot' id='guaberlian'><div onclick='chclickinfospotguaberlian1();' id='infospotguaberlian1' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/920901cb514eae669c0ac9cc2fb76746.png' style='width: 64px; height: 64px;'></div></div><div class='customhotspot' id='Kasaung'><div onclick='chclickinfospotKasaung1();' id='infospotKasaung1' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='customhotspots/920901cb514eae669c0ac9cc2fb76746.png' style='width: 64px; height: 64px;'></div></div><!--customhtml-end-->
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: hidden; overflow-y: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div class="mediaclosebutton" onclick="hideTemp()"><i class="fa fa-times-circle"></i></div>
+		</div>
+
+		<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Loading...<!--loadingtext-end-->
+    		</div>
+    	</div>
+		
+    	<script>
+			
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+/*panolens-end*/
+			
+			viewer.addUpdateCallback(function(){});
+			
+			/*panoramas*/
+var pute = new PANOLENS.ImagePanorama( "panoramas/pute.jpg" );
+			pute.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			pute.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			pute.addEventListener('click', function(e){
+			});
+
+var infospotpute0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotpute0.position.set( 4961.42, -423.77, 370.94 );
+					pute.add(infospotpute0);
+infospotpute0.addEventListener('click', function(){
+ChangePanorama('awal');
+});
+viewer.add( pute );
+var awal = new PANOLENS.ImagePanorama( "panoramas/awal.jpg" );
+			awal.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			awal.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			awal.addEventListener('click', function(e){
+			});
+
+var infospotawal0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotawal0.position.set( -31.32, -390.31, 4983.02 );
+					awal.add(infospotawal0);
+infospotawal0.addEventListener('click', function(){
+ChangePanorama('tengah');
+});
+var infospotawal1 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotawal1.position.set( -1533.77, -537.31, -4724.63 );
+					awal.add(infospotawal1);
+infospotawal1.addEventListener('click', function(){
+ChangePanorama('pute');
+});
+var infospotawal2 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospotawal2.position.set( 3042.28, 257.28, 3948.40 );
+					infospotawal2.visible = false;
+					awal.add(infospotawal2);
+infospotawal2.addEventListener('click', function(){
+ChangePanorama('ammarung');
+});
+var infospotawal3 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotawal3.position.set( -3252.33, -98.62, -3786.32 );
+					infospotawal3.visible = false;
+					awal.add(infospotawal3);
+infospotawal3.addEventListener('click', function(){
+showMedia(1, 'images/WhatsAppImage2022-06-15at20.16.03.jpeg');
+});
+viewer.add( awal );
+var tengah = new PANOLENS.ImagePanorama( "panoramas/tengah.jpg" );
+			tengah.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			tengah.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			tengah.addEventListener('click', function(e){
+			});
+
+var infospottengah0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospottengah0.position.set( 4757.52, -593.89, -1385.22 );
+					tengah.add(infospottengah0);
+infospottengah0.addEventListener('click', function(){
+ChangePanorama('awal');
+});
+var infospottengah1 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospottengah1.position.set( -468.10, -423.85, 4956.32 );
+					tengah.add(infospottengah1);
+infospottengah1.addEventListener('click', function(){
+ChangePanorama('depan');
+});
+viewer.add( tengah );
+var depan = new PANOLENS.ImagePanorama( "panoramas/depan.jpg" );
+			depan.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			depan.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			depan.addEventListener('click', function(e){
+			});
+
+var infospotdepan0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotdepan0.position.set( -3889.66, -3131.42, -70.04 );
+					depan.add(infospotdepan0);
+infospotdepan0.addEventListener('click', function(){
+ChangePanorama('tengah');
+});
+var infospotdepan1 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotdepan1.position.set( 4514.05, -2098.87, 378.92 );
+					infospotdepan1.visible = false;
+					depan.add(infospotdepan1);
+infospotdepan1.addEventListener('click', function(){
+ChangePanorama('guaberlian');
+});
+var infospotdepan2 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotdepan2.position.set( 4451.68, -2038.21, -987.66 );
+					infospotdepan2.visible = false;
+					depan.add(infospotdepan2);
+infospotdepan2.addEventListener('click', function(){
+ChangePanorama('ammarung');
+});
+var infospotdepan3 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotdepan3.position.set( 2339.51, -723.11, 4350.74 );
+					infospotdepan3.visible = false;
+					depan.add(infospotdepan3);
+infospotdepan3.addEventListener('click', function(){
+ChangePanorama('Kasaung');
+});
+viewer.add( depan );
+var ammarung = new PANOLENS.ImagePanorama( "panoramas/ammarung.jpg" );
+			ammarung.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			ammarung.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			ammarung.addEventListener('click', function(e){
+			});
+
+var infospotammarung0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotammarung0.position.set( -2279.06, -2133.52, 3899.59 );
+					ammarung.add(infospotammarung0);
+infospotammarung0.addEventListener('click', function(){
+ChangePanorama('depan');
+});
+var infospotammarung1 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotammarung1.position.set( -4636.73, -495.06, -1777.08 );
+					ammarung.add(infospotammarung1);
+infospotammarung1.addEventListener('click', function(){
+ChangePanorama('awal');
+});
+viewer.add( ammarung );
+var guaberlian = new PANOLENS.ImagePanorama( "panoramas/guaberlian.jpg" );
+			guaberlian.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			guaberlian.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			guaberlian.addEventListener('click', function(e){
+			});
+
+var infospotguaberlian0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotguaberlian0.position.set( -3925.81, -2754.01, -1389.26 );
+					guaberlian.add(infospotguaberlian0);
+infospotguaberlian0.addEventListener('click', function(){
+ChangePanorama('depan');
+});
+var infospotguaberlian1 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotguaberlian1.position.set( 4356.56, -1011.50, -2212.38 );
+					infospotguaberlian1.visible = false;
+					guaberlian.add(infospotguaberlian1);
+infospotguaberlian1.addEventListener('click', function(){
+showMedia(1, 'images/WhatsAppImage2022-06-15at20.16.11.jpeg');
+});
+viewer.add( guaberlian );
+var Kasaung = new PANOLENS.ImagePanorama( "panoramas/Kasaung.jpg" );
+			Kasaung.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			Kasaung.addEventListener('load', function(e){
+				$("#loading").fadeOut();
+			});
+			Kasaung.addEventListener('click', function(e){
+			});
+
+var infospotKasaung0 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotKasaung0.position.set( 4223.70, -2337.90, 1279.43 );
+					Kasaung.add(infospotKasaung0);
+infospotKasaung0.addEventListener('click', function(){
+ChangePanorama('depan');
+});
+var infospotKasaung1 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotKasaung1.position.set( 459.87, 21.18, 4975.07 );
+					infospotKasaung1.visible = false;
+					Kasaung.add(infospotKasaung1);
+infospotKasaung1.addEventListener('click', function(){
+showMedia(1, 'images/WhatsAppImage2022-06-15at20.16.50.jpeg');
+});
+viewer.add( Kasaung );
+$(document).ready(function(){ ChangePanorama('pute '); });
+
+/*panoramas-end*/
+            
+			
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 99%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+			
+			
+			
+			//Update Callback
+			viewer.addUpdateCallback(function(){
+				
+				/*viewerupdatecallback*/
+if(viewer.panorama == pute){
+}
+
+if(viewer.panorama == awal){
+ShowMyInfospot(infospotawal2, 'infospotawal2');
+ShowMyInfospot(infospotawal3, 'infospotawal3');
+}
+
+if(viewer.panorama == tengah){
+}
+
+if(viewer.panorama == depan){
+ShowMyInfospot(infospotdepan1, 'infospotdepan1');
+ShowMyInfospot(infospotdepan2, 'infospotdepan2');
+ShowMyInfospot(infospotdepan3, 'infospotdepan3');
+}
+
+if(viewer.panorama == ammarung){
+}
+
+if(viewer.panorama == guaberlian){
+ShowMyInfospot(infospotguaberlian1, 'infospotguaberlian1');
+}
+
+if(viewer.panorama == Kasaung){
+ShowMyInfospot(infospotKasaung1, 'infospotKasaung1');
+}
+/*viewerupdatecallback-end*/
+				
+				
+			});
+			
+			
+			
+			var hotspotsvisible = true;
+			function ShowMyInfospot(hs, elid){
+				var thehs = toScreenPosition(hs);
+				if(thehs.z < 1){
+					$("#" + elid).css({
+						"top" : (thehs.y - ($("#" + elid).height()/2)) + "px",
+						"left" : (thehs.x - ($("#" + elid).width()/2)) + "px",
+					});
+					if(hotspotsvisible)
+						$("#" + elid).show();
+				}else{
+					$("#" + elid).hide();
+				}
+				
+			}
+			
+			function toScreenPosition(obj)
+			{
+				var vector = new THREE.Vector3();
+				var widthHalf = 0.5 * innerWidth;
+				var heightHalf = 0.5 * innerHeight;
+				
+				//obj.updateMatrixWorld();				
+				vector.setFromMatrixPosition(obj.matrixWorld);
+				
+				
+				vector.project(viewer.camera);
+
+				vector.x = ( vector.x * widthHalf ) + widthHalf;
+				vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+				
+				return { 
+					x: vector.x,
+					y: vector.y,
+					z: vector.z,
+				};
+
+			};
+			
+			var currentPanorama;
+			function ChangePanorama(panorama){
+				currentPanorama = panorama;
+				HideInfospots(); 
+				//$("#loading").fadeIn();
+				//$(".customhotspot").fadeOut();
+				setTimeout(function(){
+					viewer.setPanorama(window[panorama]);
+				}, 500);
+				setTimeout(function(){
+					$("#" + panorama).fadeIn();
+				}, 1500);
+				
+			}
+			
+			function HideInfospots(){
+				$(".customhotspot").fadeOut();
+			}
+
+			/*customjs*/
+function chclickinfospotawal2(){ 
+ChangePanorama('ammarung');
+}
+
+function chclickinfospotawal3(){ 
+showMedia(1, 'images/WhatsAppImage2022-06-15at20.16.03.jpeg');
+}
+
+function chclickinfospotdepan1(){ 
+ChangePanorama('guaberlian');
+}
+
+function chclickinfospotdepan2(){ 
+ChangePanorama('ammarung');
+}
+
+function chclickinfospotdepan3(){ 
+ChangePanorama('Kasaung');
+}
+
+function chclickinfospotguaberlian1(){ 
+showMedia(1, 'images/WhatsAppImage2022-06-15at20.16.11.jpeg');
+}
+
+function chclickinfospotKasaung1(){ 
+showMedia(1, 'images/WhatsAppImage2022-06-15at20.16.50.jpeg');
+}
+/*customjs-end*/
+        </script>
+	</body>
+</html>

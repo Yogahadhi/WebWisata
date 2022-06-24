@@ -54,7 +54,7 @@ $row = mysqli_fetch_assoc($result);?>
 					<div class="row mb-4">
 						<?php  
 							$categoryid=$row['id'];
-							getcategoryblogs("blogs",$categoryid);
+							getcategoryblogs_v2("blogs",$categoryid);
 						?>
 					</div>
 				</div>
@@ -62,15 +62,22 @@ $row = mysqli_fetch_assoc($result);?>
 				<!--right-->
 				<aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
 					<div class="right-blog-info text-left">
-						<h4><strong>Kategori</strong></h4>
-						<br>
+					<form action="search.php" method="post" name="form" >
+						<div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="search" placeholder="Cari di sini..." required="yes" type="text" name="search[keyword]" style="background-color:#fff;" />
+                                <button class="btn btn-success" type="submit" name="submit">Search</button>
+                            </div>
+                        </div>
+					</form>
+
 						<ul class="list-group single">
-							<?php countcategories();?>
+							<?php getcategoriesmenu_v2("blog_categories");?>
 						</ul>
 						<br>
 										<div class="tech-btm">
-											<h4>Informasi Penting</h4>
-											<?php geteditorschoice("editors_choice");?>
+											<h4>Postingan terakhir</h4>
+											<?php getblogridposts_v2("blogs");?>
 											<!--olderpostsendhere-->
 										</div>
 									</div>
@@ -102,7 +109,6 @@ $row = mysqli_fetch_assoc($result);?>
 		});
 	</script>
 	<!--// end-smoth-scrolling -->
-
 	<script>
 		$(document).ready(function () {
 			/*

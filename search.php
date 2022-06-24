@@ -136,7 +136,7 @@ require_once('database/db.php');//db config file
 								<h5 class="card-title">
 									<a href="single.php?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
 								</h5>
-								<a href="single.php?id=<?php echo $row['id']; ?>" class="btn btn-primary read-m">Read More</a>
+								<a href="single.php?id=<?php echo $row['id']; ?>" class="btn btn-primary read-m">Selengkapnya</a>
 							</div>
 						</div>
 						<?php
@@ -194,6 +194,8 @@ require_once('database/db.php');//db config file
 	<a href="#home" class="scroll" id="toTop" style="display: block;">
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
+
+		
 
 	<!-- //Custom-JavaScript-File-Links -->
 	<script src="js/bootstrap.js"></script>

@@ -28,6 +28,7 @@ $roo=mysqli_fetch_assoc($feedback);?>
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="css/single.css">
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/blog.css" rel='stylesheet' type='text/css' />
 	<link href="css/fontawesome-all.css" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	rel="stylesheet">
@@ -53,40 +54,30 @@ $roo=mysqli_fetch_assoc($feedback);?>
 			<a href="index.php">Beranda</a>
 		</li>
 		<li class="breadcrumb-item active"><?php echo $row['title']; ?></li>
+		
 	</ol>
 
 	<!--//banner-->
 	<section class="banner-bottom">
 		<!--/blog-->
 		<div class="container">
-		<h3 class="tittle"><?php echo $row['title']; ?></h3><br><br>
+
 			<div class="row">
 				<!--left-->
 				<div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+				<h1 class="fw-bolder mb-1" style="font-weight:bold"><?php echo $row['title']; ?></h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2">Di post pada <?php echo $row['date']; ?> oleh <b> <?php echo $row['author']; ?> </b></div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light"  href="#!"><?php echo $row['tags']; ?></a>
+							<br><br>
 					<div class="blog-grid-top">
 						<div class="b-grid-top">
 							<div class="blog_info_left_grid">
 								<a href="#">
-									<img src="blogadmin/images/<?php echo $row['photo']; ?>" class="img-fluid" alt="image not available" style="width:900px;height:500px;object-fit:cover;object-position:center;">
+									<img src="blogadmin/images/<?php echo $row['photo']; ?>" class="img-fluid" alt="image not available" style="object-fit:cover;object-position:center;">
 								</a>
 							</div>
-							<div class="blog-info-middle">
-								<ul>
-									<li>
-										<a href="#">
-											<i class="far fa-calendar-alt"></i><?php echo $row['date']; ?></a>
-										</li>
-										<li class="mx-2">
-											<a href="#">
-												<i class="far fa-user"></i><?php echo $row['author']; ?></a>
-											</li>
-											<li>
-												<a href="#">
-													<i class="far fa-tags"></i> <?php echo $row['tags']; ?></a>
-												</li>
-
-												</ul>
-											</div>
 										</div>
 										<br>
 										<!--sharing script-->
@@ -98,20 +89,27 @@ $roo=mysqli_fetch_assoc($feedback);?>
 								<!--//left-->
 								<!--right-->
 								<aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
-									<div class="right-blog-info text-left">
-										<h4><strong>Kategori</strong></h4>
-										<br>
-										<ul class="list-group single">
-											<?php countcategories();?>
-										</ul>
+					<div class="right-blog-info text-left">
+					<form action="search.php" method="post" name="form" >
+						<div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="search" placeholder="Cari di sini..." required="yes" type="text" name="search[keyword]" style="background-color:#fff;" />
+                                <button class="btn btn-success" type="submit" name="submit">Search</button>
+                            </div>
+                        </div>
+					</form>
+
+						<ul class="list-group single">
+							<?php getcategoriesmenu_v2("blog_categories");?>
+						</ul>
+						<br>
 										<div class="tech-btm">
-											<br>
-											<h4>Informasi Penting</h4>
-											<?php geteditorschoice("editors_choice");?>
+											<h4>Postingan terakhir</h4>
+											<?php getblogridposts_v2("blogs");?>
 											<!--olderpostsendhere-->
 										</div>
-													</div>
-												</aside>
+									</div>
+								</aside>
 												<!--//right-->
 											</div>
 										</div>
@@ -158,7 +156,7 @@ $roo=mysqli_fetch_assoc($feedback);?>
 							 <a href="#home" class="scroll" id="toTop" style="display: block;">
 							 	<span id="toTopHover" style="opacity: 1;"> </span>
 							 </a>
-
+						
 							 <!-- //Custom-JavaScript-File-Links -->
 							 <script src="js/bootstrap.js"></script>
 
